@@ -7,12 +7,12 @@ use std::error::Error;
 /// NOTE: this certificate is to be used for demonstration purposes only!
 pub static CERT_PEM: &str = include_str!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../certs/cert.pem"
+    "/certs/cert.pem"
 ));
 /// NOTE: this certificate is to be used for demonstration purposes only!
 pub static KEY_PEM: &str = include_str!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../certs/key.pem"
+    "/certs/key.pem"
 ));
 
 #[tokio::main]

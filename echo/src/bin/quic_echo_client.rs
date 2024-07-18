@@ -7,7 +7,7 @@ use std::{error::Error, net::SocketAddr};
 /// NOTE: this certificate is to be used for demonstration purposes only!
 pub static CERT_PEM: &str = include_str!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../certs/cert.pem"
+    "/certs/cert.pem"
 ));
 
 #[tokio::main]
