@@ -19,7 +19,7 @@ pub static KEY_PEM: &str = include_str!(concat!(
 async fn main() -> Result<(), Box<dyn Error>> {
     let mut server = Server::builder()
         .with_tls((CERT_PEM, KEY_PEM))?
-        .with_io("127.0.0.1:4433")?
+        .with_io("0.0.0.0:4433")?
         .start()?;
 
     while let Some(mut connection) = server.accept().await {

@@ -6,6 +6,9 @@ TARGET_PLATFROM=x86_64-unknown-linux-gnu
 
 pwd
 
+rm -rf docker/server
+rm -rf docker/client
+
 cargo install cross
 rustup target add ${TARGET_PLATFROM}
 
@@ -19,10 +22,8 @@ cd echo
 cross build --target ${TARGET_PLATFROM} || exit 1
 cd ..
 
-rm -rf docker/server
-cp custom-congestion-controller/target/${TARGET_PLATFROM}/debug/main docker/server
-
-rm -rf docker/client
+cp echo/target/${TARGET_PLATFROM}/debug/quic_echo_server docker/server
+# cp custom-congestion-controller/target/${TARGET_PLATFROM}/debug/main docker/server
 cp echo/target/${TARGET_PLATFROM}/debug/quic_echo_client docker/client
 
 docker build -t quic-simulation:${VERSION} -f docker/Dockerfile ./docker
