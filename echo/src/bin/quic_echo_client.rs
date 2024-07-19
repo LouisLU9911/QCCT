@@ -14,11 +14,11 @@ pub static CERT_PEM: &str = include_str!(concat!(
 async fn main() -> Result<(), Box<dyn Error>> {
     let client = Client::builder()
         .with_tls(CERT_PEM)?
-        .with_io("10.0.0.2:0")?
+        .with_io("0.0.0.0:0")?
         .start()?;
 
-    let addr: SocketAddr = "10.0.0.1:4433".parse()?;
-    let connect = Connect::new(addr).with_server_name("localhost");
+    let addr: SocketAddr = "127.0.0.1:4433".parse()?;
+    let connect = Connect::new(addr).with_server_name("remote");
     let mut connection = client.connect(connect).await?;
 
     // ensure the connection doesn't time out with inactivity

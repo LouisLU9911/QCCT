@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  quic-server:
+    image: quic-simulation:0.1.0
+    command: sleep 3600
+    networks:
+      my_network:
+        ipv4_address: 10.0.0.2
+
+  quic-client:
+    image: quic-simulation:0.1.0
+    command: sleep 3600
+    networks:
+      my_network:
+        ipv4_address: 10.0.0.3
+
+networks:
+  my_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+

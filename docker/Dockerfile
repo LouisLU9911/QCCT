@@ -1,5 +1,7 @@
 FROM ubuntu:22.04
 
+RUN apt update -y && apt install hping3 inetutils-ping netcat nmap telnet -y
+
 COPY server /
 COPY client /
 

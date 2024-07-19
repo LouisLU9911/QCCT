@@ -21,7 +21,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     // Build an `s2n_quic::Server`
     let mut server = Server::builder()
         .with_tls((CERT_PEM, KEY_PEM))?
-        .with_io("127.0.0.1:4433")?
+        .with_io("0.0.0.0:4433")?
         // Specify the custom congestion controller endpoint defined in `custom-congestion-controller/src/lib.rs`
         .with_congestion_controller(MyCongestionControllerEndpoint::default())?
         .start()?;
