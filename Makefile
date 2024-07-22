@@ -5,11 +5,11 @@ up:
 stop:
 	cd docker && docker-compose stop
 
-down:
+down: tc-drop
 	cd docker && docker-compose down
 
 build:
-	bash docker/build.sh
+	bash scripts/build.sh
 
 clean:
 	rm -rf docker/client
@@ -24,3 +24,9 @@ show:
 	ip addr
 	@echo "================================================="
 	ip tuntap show
+
+tc: tc-drop
+	cd scripts && bash apply_tc.sh
+
+tc-drop:
+	cd scripts && bash drop_tc.sh

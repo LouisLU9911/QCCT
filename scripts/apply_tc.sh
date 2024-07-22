@@ -24,10 +24,6 @@ VETH2="${VETH2%@*}"
 echo Server:$VETH1
 echo Client:$VETH2
 
-# Drop previous one
-sudo tc qdisc del dev $VETH1 root || exit 1
-sudo tc qdisc del dev $VETH2 root || exit 1
-
 # Apply traffic control rules
 # Add a delay of 100ms and a packet loss of 10%
 sudo tc qdisc add dev $VETH1 root netem delay 100ms loss 10% || exit 1
