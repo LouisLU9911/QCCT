@@ -18,3 +18,9 @@ clean:
 clean-all: clean
 	cd custom-congestion-controller && cross clean
 	cd echo && cross clean
+
+show:
+	@echo "================================================="
+	ip addr
+	@echo "================================================="
+	ip tuntap show
