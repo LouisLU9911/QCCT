@@ -36,14 +36,17 @@ pub mod custom_congestion_controller {
         type PacketInfo = ();
 
         fn congestion_window(&self) -> u32 {
+            // TODO
             self.congestion_window
         }
 
         fn bytes_in_flight(&self) -> u32 {
+            // TODO
             self.bytes_in_flight
         }
 
         fn is_congestion_limited(&self) -> bool {
+            // TODO
             self.congestion_window < self.bytes_in_flight
         }
 
@@ -59,6 +62,7 @@ pub mod custom_congestion_controller {
             rtt_estimator: &RttEstimator,
             publisher: &mut Pub,
         ) -> Self::PacketInfo {
+            // TODO
             self.bytes_in_flight += sent_bytes as u32;
         }
 
@@ -70,6 +74,7 @@ pub mod custom_congestion_controller {
             publisher: &mut Pub,
         ) {
             // no op
+            // TODO
         }
 
         fn on_ack<Pub: Publisher>(
@@ -82,6 +87,7 @@ pub mod custom_congestion_controller {
             ack_receive_time: Timestamp,
             publisher: &mut Pub,
         ) {
+            // TODO
             self.bytes_in_flight -= bytes_acknowledged as u32;
             self.congestion_window += bytes_acknowledged as u32;
         }
@@ -96,6 +102,7 @@ pub mod custom_congestion_controller {
             timestamp: Timestamp,
             publisher: &mut Pub,
         ) {
+            // TODO
             // Loss-based congestion controllers such as New Reno or CUBIC will decrease the
             // congestion window when a packet is lost. In this simple example congestion
             // controller the congestion window is reduced for every packet; an actual congestion
@@ -112,10 +119,12 @@ pub mod custom_congestion_controller {
             event_time: Timestamp,
             publisher: &mut Pub,
         ) {
+            // TODO
             self.congestion_window = (self.congestion_window as f32 * 0.5) as u32;
         }
 
         fn on_mtu_update<Pub: Publisher>(&mut self, max_data_size: u16, publisher: &mut Pub) {
+            // TODO(optional)
             // no op
         }
 
