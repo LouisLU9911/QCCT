@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use s2n_quic::Server;
+use s2n_quic::provider::congestion_controller::Cubic;
 use std::error::Error;
 
 /// NOTE: this certificate is to be used for demonstration purposes only!
@@ -17,9 +18,11 @@ pub static KEY_PEM: &str = include_str!(concat!(
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
+    eprintln!("Using CubicCongestionController...");
     let mut server = Server::builder()
         .with_tls((CERT_PEM, KEY_PEM))?
         .with_io("0.0.0.0:4433")?
+        .with_congestion_controller(Cubic::default())?
         .start()?;
 
     while let Some(mut connection) = server.accept().await {
