@@ -11,9 +11,9 @@ $ git clone https://github.com/LouisLU9911/quic-traffic-simulator.git
 # build
 $ make build
 
-# apply tc
-$ make tc
-
 # docker-compose up
 $ make
+
+# apply tc
+$ make tc
 ```
