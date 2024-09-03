@@ -34,17 +34,9 @@ reports_seed_42
     └── stderr.log
 ```
 
+## Train and Test
+
 ```bash
-# clone all
-$ cd path/to/your/workspace
-$ git clone https://github.com/LouisLU9911/quic-traffic-simulator.git
-
-# build
-$ make build
-
-# docker-compose up
-$ make
-
-# apply tc
-$ make tc
+$ cd s2n-quic/quic/s2n-quic-sim
+$ python main.py
 ```
