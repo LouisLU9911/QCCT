@@ -7,7 +7,7 @@ use std::{error::Error, net::SocketAddr};
 /// NOTE: this certificate is to be used for demonstration purposes only!
 pub static CERT_PEM: &str = include_str!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/certs/cert.pem"
+    "/../../s2n-quic/quic/s2n-quic-core/certs/cert.pem"
 ));
 
 #[tokio::main]
@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .with_io("0.0.0.0:0")?
         .start()?;
 
-    let addr: SocketAddr = "10.0.0.2:4433".parse()?;
+    let addr: SocketAddr = "127.0.0.1:4433".parse()?;
     let connect = Connect::new(addr).with_server_name("localhost");
     let mut connection = client.connect(connect).await?;
 
